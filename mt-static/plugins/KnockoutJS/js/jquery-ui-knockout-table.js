@@ -18,9 +18,16 @@
       this.input = this.element;
       this.$input = jQuery(this.input);
       options = this.options;
-      json = JSON.parse(this.$input.val());
-      if (typeof json.rows === 'string') {
-        json.rows = JSON.parse(json.rows);
+      json = this.$input.val();
+      if (json !== '') {
+        json = JSON.parse(json);
+        if (typeof json.rows === 'string') {
+          json.rows = JSON.parse(json.rows);
+        }
+      } else {
+        json = {
+          rows: []
+        };
       }
       if (options.applyTo === null) {
         options.applyTo = this.$input.attr('data-apply-to');
