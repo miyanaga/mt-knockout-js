@@ -1,0 +1,12 @@
+name: KnockoutJS
+id: KnockoutJS
+key: KnockoutJS
+author_link: http://www.ideamans.com/
+author_name: ideaman's Inc.
+description: <MT_TRANS phrase="Load Knockout.js library in management screen">
+version: 2.20
+
+tags:
+    function:
+        app:LoadKnockoutJS: $KnockoutJS::MT::KnockoutJS::Tags::hdlr_appLoadKnockoutJS
+
