@@ -1,3 +1,4 @@
+
 jQuery.widget 'ui.knockoutTable',
     options:
         applyTo: null
@@ -38,7 +39,6 @@ jQuery.widget 'ui.knockoutTable',
 
         # View model
         @viewModel = viewModel = ko.mapping.fromJS(json)
-        console.log(@viewModel.rows());
 
         viewModel._rowCreated = (row) ->
             if options.rowCreated?

@@ -32,6 +32,7 @@
       if (options.applyTo === null) {
         options.applyTo = this.$input.attr('data-apply-to');
       }
+      console.log(options.applyTo);
       this.$applyTo = jQuery(options.applyTo);
       this.$applyTo.find('input,textarea,select').each(function(i, el) {
         var name;
@@ -41,7 +42,6 @@
         }
       });
       this.viewModel = viewModel = ko.mapping.fromJS(json);
-      console.log(this.viewModel.rows());
       viewModel._rowCreated = function(row) {
         if (options.rowCreated != null) {
           return options.rowCreated.call(viewModel, row);
