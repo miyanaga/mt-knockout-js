@@ -32,7 +32,6 @@
       if (options.applyTo === null) {
         options.applyTo = this.$input.attr('data-apply-to');
       }
-      console.log(options.applyTo);
       this.$applyTo = jQuery(options.applyTo);
       this.$applyTo.find('input,textarea,select').each(function(i, el) {
         var name;
@@ -42,6 +41,15 @@
         }
       });
       this.viewModel = viewModel = ko.mapping.fromJS(json);
+      this.$input.bind('change', function() {
+        json = _this.$input.val();
+        if (json !== '') {
+          json = JSON.parse(json);
+          viewModel = ko.mapping.fromJS(json);
+          _this.viewModel.rows.removeAll();
+          return _this.viewModel.rows.push(viewModel.rows());
+        }
+      });
       viewModel._rowCreated = function(row) {
         if (options.rowCreated != null) {
           return options.rowCreated.call(viewModel, row);

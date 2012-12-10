@@ -40,6 +40,15 @@ jQuery.widget 'ui.knockoutTable',
         # View model
         @viewModel = viewModel = ko.mapping.fromJS(json)
 
+        # Reloader
+        @$input.bind 'change', =>
+            json = @$input.val()
+            if json isnt ''
+                json = JSON.parse json
+                viewModel = ko.mapping.fromJS(json)
+                @viewModel.rows.removeAll()
+                @viewModel.rows.push viewModel.rows()
+
         viewModel._rowCreated = (row) ->
             if options.rowCreated?
                 options.rowCreated.call viewModel, row
